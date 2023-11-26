@@ -52,7 +52,12 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="BlenderJson.cs" />
     <Compile Include="GettingStarted.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

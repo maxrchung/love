@@ -2,5 +2,6 @@
 BeatmapId: 1576983
 BeatmapName: "a"
 Assemblies:
+  - "C:\\Users\\Max\\Documents\\storybrew\\projects\\love\\Newtonsoft.Json.dll"
 Layers:
   - "0718ac1b225c481a8d8e42f28833e1d6"
