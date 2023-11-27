@@ -59,6 +59,21 @@ namespace StorybrewScripts
         public override void Generate()
         {
             var fileContents = File.ReadAllText("projects/love/love.json");
+
+            /** Example data (for now):
+                {
+                    "1.0": [
+                        [
+                            1.5326488018035889,
+                            0.48310744762420654,
+                            0.7764750123023987,
+                            0.8997672200202942,
+                            0.6785909533500671,
+                            0.9388666749000549
+                        ]
+                    ],
+                }
+             */
             var data = JsonConvert.DeserializeObject<SortedDictionary<float, List<List<float>>>>(fileContents);
 
             var edges = new List<EdgeData>(data.First().Value.Count());
