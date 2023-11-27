@@ -8,7 +8,6 @@ using System.Linq;
 
 namespace StorybrewScripts
 {
-
     public class BlenderJson : StoryboardObjectGenerator
     {
         public class EdgeData
@@ -17,38 +16,39 @@ namespace StorybrewScripts
             {
                 Sprite = layer.CreateSprite("w.png", OsbOrigin.CentreLeft, start);
 
-                var distance = end - start;
-                var scale = new Vector2(distance.Length, 1);
-                Sprite.ScaleVec(time, scale);
-
-                var rotation = Vector3.CalculateAngle(new Vector3(start), new Vector3(end));
-                Sprite.Rotate(time, rotation);
-
-                LastTime = time;
-                LastPosition = start;
-                LastScale = scale;
-                LastRotation = rotation;
+                UpdateSprite(time, start, end);
             }
 
             public void Transition(float time, Vector2 start, Vector2 end)
             {
-                Sprite.Move(LastTime, time, LastPosition, start);
+                UpdateSprite(time, start, end);
+            }
 
+            private void UpdateSprite(float time, Vector2 start, Vector2 end)
+            {
                 var distance = end - start;
                 var scale = new Vector2(distance.Length, 1);
-                Sprite.ScaleVec(LastTime, time, LastScale, scale);
-
                 var rotation = Vector3.CalculateAngle(new Vector3(start), new Vector3(end));
-                Sprite.Rotate(LastTime, time, LastRotation, rotation);
+
+                if (Sprite.Commands.Count() == 0) // Initial commands
+                {
+                    Sprite.ScaleVec(time, scale);
+                    Sprite.Rotate(time, rotation);
+                }
+                else
+                {
+                    Sprite.Move(LastTime, time, LastPosition, start);
+                    Sprite.ScaleVec(LastTime, time, LastScale, scale);
+                    Sprite.Rotate(LastTime, time, LastRotation, rotation);
+                }
 
                 LastTime = time;
                 LastPosition = start;
                 LastScale = scale;
                 LastRotation = rotation;
-
             }
 
-            public OsbSprite Sprite { get; }
+            public OsbSprite Sprite { get; set; }
 
             private Vector2 LastPosition { get; set; }
             private Vector2 LastScale { get; set; }
