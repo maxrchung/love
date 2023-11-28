@@ -26,32 +26,31 @@ namespace StorybrewScripts
 
             private void UpdateSprite(float time, Vector2 start, Vector2 end)
             {
-                var distance = end - start;
-                var scale = new Vector2(distance.Length, 1);
+                var scaleX = (end - start).Length;
                 var rotation = Vector3.CalculateAngle(new Vector3(start), new Vector3(end));
 
-                if (Sprite.Commands.Count() == 0) // Initial commands
+                if (Sprite.CommandCount == 0) // Initial commands
                 {
-                    Sprite.ScaleVec(time, scale);
+                    Sprite.ScaleVec(time, scaleX, 1);
                     Sprite.Rotate(time, rotation);
                 }
                 else
                 {
                     Sprite.Move(LastTime, time, LastPosition, start);
-                    Sprite.ScaleVec(LastTime, time, LastScale, scale);
+                    Sprite.ScaleVec(LastTime, time, LastScaleX, 1, scaleX, 1);
                     Sprite.Rotate(LastTime, time, LastRotation, rotation);
                 }
 
                 LastTime = time;
                 LastPosition = start;
-                LastScale = scale;
+                LastScaleX = scaleX;
                 LastRotation = rotation;
             }
 
             public OsbSprite Sprite { get; set; }
 
             private Vector2 LastPosition { get; set; }
-            private Vector2 LastScale { get; set; }
+            private float LastScaleX { get; set; }
             private float LastRotation { get; set; }
             private float LastTime { get; set; }
         }
@@ -61,6 +60,7 @@ namespace StorybrewScripts
             var fileContents = File.ReadAllText("projects/love/love.json");
 
             /** Example data (for now):
+               
                 {
                     "1.0": [
                         [
@@ -73,6 +73,7 @@ namespace StorybrewScripts
                         ]
                     ],
                 }
+
              */
             var data = JsonConvert.DeserializeObject<SortedDictionary<float, List<List<float>>>>(fileContents);
 
@@ -81,15 +82,15 @@ namespace StorybrewScripts
 
             foreach (var keyframe in data)
             {
-                var time = keyframe.Key;
+                var time = keyframe.Key * 1000;
                 var edgeDatas = keyframe.Value;
 
                 for (var i = 0; i < edgeDatas.Count; ++i)
                 {
                     var edgeData = edgeDatas[i];
 
-                    var start = new Vector2(edgeData[0], edgeData[1]);
-                    var end = new Vector2(edgeData[3], edgeData[4]);
+                    var start = new Vector2(edgeData[0], edgeData[1]) * new Vector2(854, 480);
+                    var end = new Vector2(edgeData[3], edgeData[4]) * new Vector2(854, 480);
 
                     if (keyframe.Key == data.First().Key)
                     {
