@@ -24,32 +24,29 @@ namespace StorybrewScripts
             {
                 Sprite = layer.CreateSprite("w.png", OsbOrigin.CentreLeft, start);
 
-                var test = layer.CreateSprite("w.png", OsbOrigin.CentreLeft, start);
-                test.Scale(1000, 10000, 5, 5);
-
                 UpdateSprite(time, start, end);
             }
 
-            public void Transition(float time, Vector2 start, Vector2 end)
-            {
-                UpdateSprite(time, start, end);
-            }
-
-            // This helped: https://straypixels.net/angle-between-vectors/
-            // https://stackoverflow.com/questions/14066933/direct-way-of-computing-the-clockwise-angle-between-two-vectors
+            // Just copied some stuff from here??? https://stackoverflow.com/a/16544330
             private float AngleBetween(Vector2 start, Vector2 end)
             {
                 return (float)(Math.Atan2(
-                    -Vector3.Cross(new Vector3(start), new Vector3(end)).Length,
-                    -Vector2.Dot(start, end)
-                ) + Math.PI);
+                    start.X * end.Y - start.Y * end.X,
+                    start.X * end.X + start.Y * end.Y
+                ));
             }
 
-            private void UpdateSprite(float time, Vector2 start, Vector2 end)
+            public void UpdateSprite(float time, Vector2 start, Vector2 end)
             {
-                var scaleX = (end - start).Length;
-                var rotation = Vector3.CalculateAngle(new Vector3(start), new Vector3(end));
-                //var rotation = AngleBetween(start, end);
+                var diff = end - start;
+                var scaleX = diff.Length;
+
+                // Kind of janky to assume initial == 0 but if rotation is truly zero, we should probably use (1,0) anyways?
+                var last = LastRotation == 0
+                    ? new Vector2(1, 0)
+                    : new Vector2((float)Math.Cos(LastRotation), (float)Math.Sin(LastRotation));
+
+                var rotation = LastRotation + AngleBetween(last, diff);
 
                 if (Sprite.CommandCount == 0) // Initial commands
                 {
@@ -101,7 +98,7 @@ namespace StorybrewScripts
         {
             var fileContents = File.ReadAllText("projects/love/love.json");
 
-            /** Example data (for now):
+            /** Example data (for now?):
                
                 {
                     "1.0": [
@@ -140,7 +137,7 @@ namespace StorybrewScripts
                     }
                     else
                     {
-                        edges[i].Transition(time, start, end);
+                        edges[i].UpdateSprite(time, start, end);
                     }
                 }
             }
