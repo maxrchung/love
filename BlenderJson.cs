@@ -8,11 +8,8 @@ using System.IO;
 using System.Linq;
 
 // TODO:
-// Fix axes and position conversion
 // Key frames
 // Support multiple objects
-// Test decimate
-// Do stuff!!!
 
 namespace StorybrewScripts
 {
