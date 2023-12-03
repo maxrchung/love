@@ -8,8 +8,8 @@ using System.IO;
 using System.Linq;
 
 // TODO:
-// Key frames
 // Support multiple objects
+// Handle frame rate
 
 namespace StorybrewScripts
 {
@@ -87,7 +87,7 @@ namespace StorybrewScripts
         private const float FRAMES_PER_SECOND = 24;
         private float ConvertFrame(float frame)
         {
-            return frame * 1000;
+            return frame * 300;
             return frame * FRAMES_PER_SECOND / 1000;
         }
 
@@ -126,7 +126,7 @@ namespace StorybrewScripts
                     var edgeData = edgeDatas[i];
 
                     var start = ConvertPosition(new Vector2(edgeData[0], edgeData[1]));
-                    var end = ConvertPosition(new Vector2(edgeData[3], edgeData[4]));
+                    var end = ConvertPosition(new Vector2(edgeData[2], edgeData[3]));
 
                     if (keyframe.Key == data.First().Key)
                     {
