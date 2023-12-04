@@ -3,3 +3,6 @@
 .sbrew.bak
 .cache
 .vs
+
+# Ignore generated Blender edge data
+.json
