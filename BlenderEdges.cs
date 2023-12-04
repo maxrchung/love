@@ -7,21 +7,38 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-// TODO:
-// Support multiple objects
-// Handle frame rate
-
 namespace StorybrewScripts
 {
-    public class BlenderJson : StoryboardObjectGenerator
+    using ObjectData = SortedDictionary<float, List<List<float>>>;
+
+    public class BlenderEdges : StoryboardObjectGenerator
     {
-        public class EdgeData
+        /** Example data (for now?):
+            {
+                frames_per_second: 30,
+                objects: [{
+                    "1.0": [[
+                        1.5326488018035889,
+                        0.48310744762420654,
+                        0.7764750123023987,
+                        0.8997672200202942,
+                        0.6785909533500671,
+                        0.9388666749000549
+                    ]]
+                }],
+            }
+         */
+        public class BlenderData
         {
-            public EdgeData(StoryboardLayer layer, float time, Vector2 start, Vector2 end)
+            public float frames_per_second { get; set; }
+            public List<ObjectData> objects { get; set; }
+        }
+
+        public class Edge
+        {
+            public Edge(StoryboardLayer layer, Vector2 start)
             {
                 Sprite = layer.CreateSprite("w.png", OsbOrigin.CentreLeft, start);
-
-                UpdateSprite(time, start, end);
             }
 
             // Just copied some stuff from here??? https://stackoverflow.com/a/16544330
@@ -38,7 +55,7 @@ namespace StorybrewScripts
                 var diff = end - start;
                 var scaleX = diff.Length;
 
-                // Kind of janky to assume initial == 0 but if rotation is truly zero, we should probably use (1,0) anyways?
+                // Kind of janky to assume initial == 0 but if rotation is zero, we should probably use (1,0) anyways?
                 var last = LastRotation == 0
                     ? new Vector2(1, 0)
                     : new Vector2((float)Math.Cos(LastRotation), (float)Math.Sin(LastRotation));
@@ -64,7 +81,6 @@ namespace StorybrewScripts
             }
 
             public OsbSprite Sprite { get; set; }
-
             private Vector2 LastPosition { get; set; }
             private float LastScaleX { get; set; }
             private float LastRotation { get; set; }
@@ -83,64 +99,46 @@ namespace StorybrewScripts
             return converted;
         }
 
-        // Blender's animation by default runs at 24 frames per second
-        private const float FRAMES_PER_SECOND = 24;
-        private float ConvertFrame(float frame)
+        private float ConvertFrame(float frame, float framesPerSecond)
         {
-            return frame * 300;
-            return frame * FRAMES_PER_SECOND / 1000;
+            var toMilliseconds = (frame / framesPerSecond) * 1000;
+            return toMilliseconds;
         }
 
         public override void Generate()
         {
             var fileContents = File.ReadAllText("projects/love/love.json");
+            var data = JsonConvert.DeserializeObject<BlenderData>(fileContents);
+            var framesPerSecond = data.frames_per_second;
+            var objects = data.objects;
 
-            /** Example data (for now?):
-               
-                {
-                    "1.0": [
-                        [
-                            1.5326488018035889,
-                            0.48310744762420654,
-                            0.7764750123023987,
-                            0.8997672200202942,
-                            0.6785909533500671,
-                            0.9388666749000549
-                        ]
-                    ],
-                }
-
-             */
-            var data = JsonConvert.DeserializeObject<SortedDictionary<float, List<List<float>>>>(fileContents);
-
-            var edges = new List<EdgeData>(data.First().Value.Count());
+            // Hvae to GetLayer at top level
             var layer = GetLayer("Main");
 
-            foreach (var keyframe in data)
+            foreach (var obj in objects)
             {
-                var time = ConvertFrame(keyframe.Key);
-                var edgeDatas = keyframe.Value;
+                var edges = new List<Edge>(obj.First().Value.Count());
 
-                for (var i = 0; i < edgeDatas.Count; ++i)
+                foreach (var keyframe in obj)
                 {
-                    var edgeData = edgeDatas[i];
+                    var time = ConvertFrame(keyframe.Key, framesPerSecond);
+                    var edgeDatas = keyframe.Value;
 
-                    var start = ConvertPosition(new Vector2(edgeData[0], edgeData[1]));
-                    var end = ConvertPosition(new Vector2(edgeData[2], edgeData[3]));
+                    for (var i = 0; i < edgeDatas.Count; ++i)
+                    {
+                        var edgeData = edgeDatas[i];
+                        var start = ConvertPosition(new Vector2(edgeData[0], edgeData[1]));
+                        var end = ConvertPosition(new Vector2(edgeData[2], edgeData[3]));
 
-                    if (keyframe.Key == data.First().Key)
-                    {
-                        edges.Add(new EdgeData(layer, time, start, end));
-                    }
-                    else
-                    {
+                        if (keyframe.Key == obj.First().Key)
+                        {
+                            edges.Add(new Edge(layer, start));
+                        }
+
                         edges[i].UpdateSprite(time, start, end);
                     }
                 }
             }
-
-
-            System.Console.WriteLine(data);
         }
     }
 }
