@@ -5,4 +5,4 @@
 .vs
 
 # Ignore generated Blender edge data
-.json
+love.json

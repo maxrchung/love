@@ -1,6 +1,6 @@
 ﻿FormatVersion: 7
-Name: "BlenderJson 1"
-Script: "BlenderJson"
+Name: "BlenderEdges 1"
+Script: "BlenderEdges"
 Multithreaded: No
 Config:
   RandomSeed:
@@ -9,7 +9,7 @@ Config:
     DisplayName: "Random Seed"
     BeginsGroup: "Common"
 Layers:
-  4144a5b39c5746ecb9c1a7d29634bf77:
+  32bca06762c3423fa8c3d27d8a31537c:
     Name: "Main"
     OsbLayer: Background
     DiffSpecific: No

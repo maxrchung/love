@@ -52,7 +52,7 @@
   </Target>
   -->
   <ItemGroup>
-    <Compile Include="BlenderJson.cs" />
+    <Compile Include="BlenderEdges.cs" />
     <Compile Include="GettingStarted.cs" />
   </ItemGroup>
   <ItemGroup>
