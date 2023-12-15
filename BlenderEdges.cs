@@ -13,6 +13,9 @@ namespace StorybrewScripts
 
     public class BlenderEdges : StoryboardObjectGenerator
     {
+        // This is probably small enough... right?
+        const float MARGIN_OF_ERROR = 0.01f;
+
         /** Example data (for now?):
             {
                 frames_per_second: 30,
@@ -50,7 +53,7 @@ namespace StorybrewScripts
                 ));
             }
 
-            public void UpdateSprite(float time, Vector2 start, Vector2 end)
+            public void UpdateSprite(float time, Vector2 start, Vector2 end, bool isLastFrame)
             {
                 var diff = end - start;
                 var scaleX = diff.Length;
@@ -69,15 +72,33 @@ namespace StorybrewScripts
                 }
                 else
                 {
-                    Sprite.Move(LastTime, time, LastPosition, start);
-                    Sprite.ScaleVec(LastTime, time, LastScaleX, 1, scaleX, 1);
-                    Sprite.Rotate(LastTime, time, LastRotation, rotation);
+                    // Save on some operations by skipping them if less than some amount
+                    if (Math.Abs((start - LastPosition).Length) > MARGIN_OF_ERROR)
+                    {
+                        Sprite.Move(LastTime, time, LastPosition, start);
+                    }
+
+                    if (Math.Abs(scaleX - LastScaleX) > MARGIN_OF_ERROR)
+                    {
+                        Sprite.ScaleVec(LastTime, time, LastScaleX, 1, scaleX, 1);
+                    }
+
+                    // Hopefully for rotation this margin of error is small enough
+                    if (Math.Abs(rotation - LastRotation) > MARGIN_OF_ERROR)
+                    {
+                        Sprite.Rotate(LastTime, time, LastRotation, rotation);
+                    }
                 }
 
                 LastTime = time;
                 LastPosition = start;
                 LastScaleX = scaleX;
                 LastRotation = rotation;
+
+                if (isLastFrame)
+                {
+                    Sprite.Fade(time, time, 1, 0);
+                }
             }
 
             public OsbSprite Sprite { get; set; }
@@ -121,12 +142,13 @@ namespace StorybrewScripts
 
                 foreach (var keyframe in obj)
                 {
+                    var isLastFrame = keyframe.Key == obj.Last().Key;
                     var time = ConvertFrame(keyframe.Key, framesPerSecond);
                     var edgeDatas = keyframe.Value;
 
-                    for (var i = 0; i < edgeDatas.Count; ++i)
+                    for (var j = 0; j < edgeDatas.Count; ++j)
                     {
-                        var edgeData = edgeDatas[i];
+                        var edgeData = edgeDatas[j];
                         var start = ConvertPosition(new Vector2(edgeData[0], edgeData[1]));
                         var end = ConvertPosition(new Vector2(edgeData[2], edgeData[3]));
 
@@ -135,7 +157,7 @@ namespace StorybrewScripts
                             edges.Add(new Edge(layer, start));
                         }
 
-                        edges[i].UpdateSprite(time, start, end);
+                        edges[j].UpdateSprite(time, start, end, isLastFrame);
                     }
                 }
             }
