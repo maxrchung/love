@@ -109,14 +109,14 @@ namespace StorybrewScripts
         }
 
         private static Vector2 SCREEN_SIZE = new Vector2(854, 480);
-        private const float SCREEN_OFFSET = -107;
+        private static Vector2 SCREEN_OFFSET = new Vector2(-107, 0);
 
         // Blender position starts (0,0) at bottom left and goes from 0 to 1.
-        // Storybrew starts at (-107,-107) top left and goes to (747,587). 
+        // Storybrew starts at (-107,0) top left and goes to (747,587). wtf?
         private Vector2 ConvertPosition(Vector2 position)
         {
-            var scaled = position * SCREEN_SIZE + new Vector2(SCREEN_OFFSET);
-            var converted = new Vector2(scaled.X, SCREEN_SIZE.Y + SCREEN_OFFSET - scaled.Y);
+            var scaled = position * SCREEN_SIZE + SCREEN_OFFSET;
+            var converted = new Vector2(scaled.X, SCREEN_SIZE.Y - scaled.Y);
             return converted;
         }
 

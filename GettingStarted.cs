@@ -9,10 +9,10 @@ namespace StorybrewScripts
         public override void Generate()
         {
             var layer = GetLayer("Main");
-            var bg = layer.CreateSprite("w.png", OsbOrigin.TopLeft, new Vector2(800, 200));
-            bg.Scale(5, 5);
-            bg.Fade(0, 2000, 0, 1);
-            bg.Fade(8000, 10000, 1, 0);
+            var bg = layer.CreateSprite("w.png", OsbOrigin.TopLeft, new Vector2(-107, 0));
+            bg.ScaleVec(0, new Vector2(854, 480));
+            bg.Color(0, 0.2, 0.2, 0.2);
+            bg.Fade(999999, 999999, 1, 0);
         }
     }
 }
