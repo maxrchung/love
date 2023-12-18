@@ -7,6 +7,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+// TODO:
+// More exaggeration?
+// 3 pixel anti alias image
+
+
 namespace StorybrewScripts
 {
     using ObjectData = SortedDictionary<float, List<List<float>>>;
