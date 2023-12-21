@@ -12,7 +12,7 @@ namespace StorybrewScripts
             var bg = layer.CreateSprite("w.png", OsbOrigin.TopLeft, new Vector2(-107, 0));
             bg.ScaleVec(0, new Vector2(854, 480));
             bg.Color(0, 0.1, 0.1, 0.1);
-            bg.Fade(999999, 999999, 1, 0);
+            bg.Fade(150000, 150000, 1, 0);
         }
     }
 }
