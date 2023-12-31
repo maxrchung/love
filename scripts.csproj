@@ -52,8 +52,9 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="Background.cs" />
+    <Compile Include="Bars.cs" />
     <Compile Include="BlenderEdges.cs" />
-    <Compile Include="GettingStarted.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

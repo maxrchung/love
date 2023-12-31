@@ -158,7 +158,7 @@ namespace StorybrewScripts
             var data = JsonConvert.DeserializeObject<BlenderData>(fileContents);
             var framesPerSecond = data.frames_per_second;
 
-            var disappear1 = new List<float>() { 144217, 144455, 144693, 144931, 145169, 145407, 145526, 145764 };
+            var disappear1 = new List<float>() { 144217, 144455, 144693, 144931, 145169, 145407, 145526 };
             GenerateEnd("11", ConvertFrame(4268, framesPerSecond), disappear1);
             GenerateEnd("12", ConvertFrame(4272, framesPerSecond), disappear1);
             GenerateEnd("13", ConvertFrame(4276, framesPerSecond), disappear1);
@@ -166,7 +166,7 @@ namespace StorybrewScripts
             GenerateEnd("15", ConvertFrame(4291, framesPerSecond), disappear1);
             GenerateEnd("16", ConvertFrame(4302, framesPerSecond), disappear1);
 
-            var disappear2 = new List<float>() { 147907, 148145, 148384, 148622, 148860, 149098, 149217, 149455 };
+            var disappear2 = new List<float>() { 147907, 148145, 148384, 148622, 148860, 149098, 149217 };
             GenerateEnd("21", ConvertFrame(4382, framesPerSecond), disappear2);
             GenerateEnd("22", ConvertFrame(4385, framesPerSecond), disappear2);
             GenerateEnd("23", ConvertFrame(4390, framesPerSecond), disappear2);
@@ -174,7 +174,7 @@ namespace StorybrewScripts
             GenerateEnd("25", ConvertFrame(4404, framesPerSecond), disappear2);
             GenerateEnd("26", ConvertFrame(4416, framesPerSecond), disappear2);
 
-            var disappear3 = new List<float>() { 151836, 152074, 152312, 152550, 152788, 153026, 153145, 153384 };
+            var disappear3 = new List<float>() { 151836, 152074, 152312, 152550, 152788, 153026, 153145 };
             GenerateEnd("31", ConvertFrame(4497, framesPerSecond), disappear3);
             GenerateEnd("32", ConvertFrame(4500, framesPerSecond), disappear3);
             GenerateEnd("33", ConvertFrame(4505, framesPerSecond), disappear3);
