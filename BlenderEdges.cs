@@ -7,11 +7,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-// TODO:
-// More exaggeration?
-// 3 pixel anti alias image
-
-
 namespace StorybrewScripts
 {
     using ObjectData = SortedDictionary<float, List<List<float>>>;
@@ -58,7 +53,7 @@ namespace StorybrewScripts
                 ));
             }
 
-            public void UpdateSprite(float time, Vector2 start, Vector2 end, bool isLastFrame)
+            public void UpdateSprite(float time, Vector2 start, Vector2 end)
             {
                 var diff = end - start;
                 var scaleX = diff.Length;
@@ -99,11 +94,11 @@ namespace StorybrewScripts
                 LastPosition = start;
                 LastScaleX = scaleX;
                 LastRotation = rotation;
+            }
 
-                if (isLastFrame)
-                {
-                    Sprite.Fade(time, time, 1, 0);
-                }
+            public void Disappear(float time)
+            {
+                Sprite.Fade(time, time, 1, 0);
             }
 
             public OsbSprite Sprite { get; set; }
@@ -131,11 +126,71 @@ namespace StorybrewScripts
             return toMilliseconds;
         }
 
+        private void GenerateEnd(string fileSuffix, float startTime, List<float> disappearTimes)
+        {
+            // Hvae to GetLayer at top level
+            var layer = GetLayer("Main");
+            var edges = new List<Edge>();
+
+            var fileContents = File.ReadAllText($"projects/love/endstuff{fileSuffix}.001.json");
+            var data = JsonConvert.DeserializeObject<List<List<float>>>(fileContents);
+
+            foreach (var edgeData in data)
+            {
+                var start = ConvertPosition(new Vector2(edgeData[0], edgeData[1]));
+                var end = ConvertPosition(new Vector2(edgeData[2], edgeData[3]));
+
+                var edge = new Edge(layer, start);
+                edges.Add(edge);
+                edge.UpdateSprite(startTime, start, end);
+            }
+
+            foreach (var edge in edges)
+            {
+                var disappearTime = disappearTimes[Random(disappearTimes.Count)];
+                edge.Disappear(disappearTime);
+            }
+        }
+
         public override void Generate()
         {
             var fileContents = File.ReadAllText("projects/love/love.json");
             var data = JsonConvert.DeserializeObject<BlenderData>(fileContents);
             var framesPerSecond = data.frames_per_second;
+
+            var disappear1 = new List<float>() { 144217, 144455, 144693, 144931, 145169, 145407, 145526, 145764 };
+            GenerateEnd("11", ConvertFrame(4268, framesPerSecond), disappear1);
+            GenerateEnd("12", ConvertFrame(4272, framesPerSecond), disappear1);
+            GenerateEnd("13", ConvertFrame(4276, framesPerSecond), disappear1);
+            GenerateEnd("14", ConvertFrame(4283, framesPerSecond), disappear1);
+            GenerateEnd("15", ConvertFrame(4291, framesPerSecond), disappear1);
+            GenerateEnd("16", ConvertFrame(4302, framesPerSecond), disappear1);
+
+            var disappear2 = new List<float>() { 147907, 148145, 148384, 148622, 148860, 149098, 149217, 149455 };
+            GenerateEnd("21", ConvertFrame(4382, framesPerSecond), disappear2);
+            GenerateEnd("22", ConvertFrame(4385, framesPerSecond), disappear2);
+            GenerateEnd("23", ConvertFrame(4390, framesPerSecond), disappear2);
+            GenerateEnd("24", ConvertFrame(4395, framesPerSecond), disappear2);
+            GenerateEnd("25", ConvertFrame(4404, framesPerSecond), disappear2);
+            GenerateEnd("26", ConvertFrame(4416, framesPerSecond), disappear2);
+
+            var disappear3 = new List<float>() { 151836, 152074, 152312, 152550, 152788, 153026, 153145, 153384 };
+            GenerateEnd("31", ConvertFrame(4497, framesPerSecond), disappear3);
+            GenerateEnd("32", ConvertFrame(4500, framesPerSecond), disappear3);
+            GenerateEnd("33", ConvertFrame(4505, framesPerSecond), disappear3);
+            GenerateEnd("34", ConvertFrame(4511, framesPerSecond), disappear3);
+            GenerateEnd("35", ConvertFrame(4519, framesPerSecond), disappear3);
+            GenerateEnd("36", ConvertFrame(4531, framesPerSecond), disappear3);
+
+            var disappear4 = new List<float>() { 157312, 157669, 158026, 158145, 158503, 158622, 158860, 158741, 158503, 158741, 159336, 159693, 159812, 160169, 160288, 160407, 160526, 160645, 160764, 161003, 161360, 161479, 161836, 162193 };
+            GenerateEnd("41", ConvertFrame(4618, framesPerSecond), disappear4);
+            GenerateEnd("42", ConvertFrame(4633, framesPerSecond), disappear4);
+            GenerateEnd("43", ConvertFrame(4647, framesPerSecond), disappear4);
+            GenerateEnd("44", ConvertFrame(4660, framesPerSecond), disappear4);
+            GenerateEnd("45", ConvertFrame(4670, framesPerSecond), disappear4);
+            GenerateEnd("46", ConvertFrame(4681, framesPerSecond), disappear4);
+            GenerateEnd("47", ConvertFrame(4690, framesPerSecond), disappear4);
+
             var objects = data.objects;
 
             // Hvae to GetLayer at top level
@@ -162,7 +217,12 @@ namespace StorybrewScripts
                             edges.Add(new Edge(layer, start));
                         }
 
-                        edges[j].UpdateSprite(time, start, end, isLastFrame);
+                        edges[j].UpdateSprite(time, start, end);
+
+                        if (isLastFrame)
+                        {
+                            edges[j].Disappear(time);
+                        }
                     }
                 }
             }

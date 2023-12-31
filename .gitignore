@@ -6,3 +6,4 @@
 
 # Ignore generated Blender edge data
 love.json
+endstuff*.json
