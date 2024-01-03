@@ -14,7 +14,7 @@ namespace StorybrewScripts
             var layer = GetLayer("Bars");
 
             // Add some bleed to sides
-            var top = layer.CreateSprite("w.png", OsbOrigin.TopLeft, new Vector2(-108, 1));
+            var top = layer.CreateSprite("w.png", OsbOrigin.TopLeft, new Vector2(-108, -1));
             top.ScaleVec(OsbEasing.In, 123979, 124812, 856, 0, 856, 66);
 
             var bottom = layer.CreateSprite("w.png", OsbOrigin.BottomLeft, new Vector2(-108, 480 + 1));
