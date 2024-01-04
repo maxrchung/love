@@ -55,6 +55,9 @@
     <Compile Include="Background.cs" />
     <Compile Include="Bars.cs" />
     <Compile Include="BlenderEdges.cs" />
+    <Compile Include="scriptslibrary/Colors.cs" />
+    <Compile Include="scriptslibrary/Constants.cs" />
+    <Compile Include="scriptslibrary/Timing.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

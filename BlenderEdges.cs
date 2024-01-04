@@ -13,9 +13,6 @@ namespace StorybrewScripts
 
     public class BlenderEdges : StoryboardObjectGenerator
     {
-        // This is probably small enough... right?
-        const float MARGIN_OF_ERROR = 0.01f;
-
         /** Example data (for now?):
             {
                 frames_per_second: 30,
@@ -73,18 +70,18 @@ namespace StorybrewScripts
                 else
                 {
                     // Save on some operations by skipping them if less than some amount
-                    if (Math.Abs((start - LastPosition).Length) > MARGIN_OF_ERROR)
+                    if (Math.Abs((start - LastPosition).Length) > Constants.MARGIN_OF_ERROR)
                     {
                         Sprite.Move(LastTime, time, LastPosition, start);
                     }
 
-                    if (Math.Abs(scaleX - LastScaleX) > MARGIN_OF_ERROR)
+                    if (Math.Abs(scaleX - LastScaleX) > Constants.MARGIN_OF_ERROR)
                     {
                         Sprite.ScaleVec(LastTime, time, LastScaleX, 1, scaleX, 1);
                     }
 
                     // Hopefully for rotation this margin of error is small enough
-                    if (Math.Abs(rotation - LastRotation) > MARGIN_OF_ERROR)
+                    if (Math.Abs(rotation - LastRotation) > Constants.MARGIN_OF_ERROR)
                     {
                         Sprite.Rotate(LastTime, time, LastRotation, rotation);
                     }
@@ -108,15 +105,12 @@ namespace StorybrewScripts
             private float LastTime { get; set; }
         }
 
-        private static Vector2 SCREEN_SIZE = new Vector2(854, 480);
-        private static Vector2 SCREEN_OFFSET = new Vector2(-107, 0);
-
         // Blender position starts (0,0) at bottom left and goes from 0 to 1.
         // Storybrew starts at (-107,0) top left and goes to (747,587). wtf?
         private Vector2 ConvertPosition(Vector2 position)
         {
-            var scaled = position * SCREEN_SIZE + SCREEN_OFFSET;
-            var converted = new Vector2(scaled.X, SCREEN_SIZE.Y - scaled.Y);
+            var scaled = position * Constants.SCREEN_SIZE + Constants.SCREEN_OFFSET;
+            var converted = new Vector2(scaled.X, Constants.SCREEN_SIZE.Y - scaled.Y);
             return converted;
         }
 

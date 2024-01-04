@@ -6,9 +6,6 @@ namespace StorybrewScripts
 {
     public class Bars : StoryboardObjectGenerator
     {
-        private static Vector2 SCREEN_SIZE = new Vector2(854, 480);
-        private static Vector2 SCREEN_OFFSET = new Vector2(-107, 0);
-
         public override void Generate()
         {
             var layer = GetLayer("Bars");
