@@ -11,6 +11,6 @@ Config:
 Layers:
   ec9740e31bac4fed9197489211a8dd02:
     Name: "Bars"
-    OsbLayer: Background
+    OsbLayer: Overlay
     DiffSpecific: No
     Visible: Yes

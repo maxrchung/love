@@ -9,27 +9,31 @@ namespace StorybrewScripts
     {
         private List<Timing> timings = new List<Timing>()
         {
-            Timing.Instant(0, Colors.Night),
+            Timing.Instant(0, Colors.Steel),
             Timing.Instant(169, Colors.Red),
             Timing.Instant(407, Colors.Blue),
-            Timing.Instant(586, Colors.Orange),
-            Timing.Instant(705, Colors.Brown),
+            Timing.Instant(586, Colors.Sun),
+            Timing.Instant(705, Colors.Tan),
             Timing.Instant(824, Colors.Green),
             Timing.Instant(943, Colors.Black),
             Timing.Instant(1062, Colors.Red),
             Timing.Instant(1479 , Colors.Blue),
-            Timing.Instant(1776, Colors.Orange),
+            Timing.Instant(1776, Colors.Sun),
             Timing.Instant(2491, Colors.Green),
-            Timing.Transition(2907, 4872, Colors.Night, Colors.White),
+            Timing.Transition(2907, 4872, Colors.Steel, Colors.White),
         };
 
         public override void Generate()
         {
             var layer = GetLayer("Background");
 
+            // Get rid of background
+            var mapBg = layer.CreateSprite("b.png");
+            mapBg.Fade(0, 0);
+
             // Add some bleed to sides
             var bg = layer.CreateSprite("m.jpg", OsbOrigin.TopLeft, new Vector2(-108, -1));
-            bg.ScaleVec(0, new Vector2(0.45f, 0.45f));
+            bg.ScaleVec(0, new Vector2(0.46f, 0.46f));
             foreach (var timing in timings)
             {
                 if (timing.startTime == timing.endTime)

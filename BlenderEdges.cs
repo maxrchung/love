@@ -114,12 +114,6 @@ namespace StorybrewScripts
             return converted;
         }
 
-        private float ConvertFrame(float frame, float framesPerSecond)
-        {
-            var toMilliseconds = (frame / framesPerSecond) * 1000;
-            return toMilliseconds;
-        }
-
         private void GenerateEnd(string fileSuffix, float startTime, List<float> disappearTimes)
         {
             // Hvae to GetLayer at top level
@@ -150,40 +144,39 @@ namespace StorybrewScripts
         {
             var fileContents = File.ReadAllText("projects/love/love.json");
             var data = JsonConvert.DeserializeObject<BlenderData>(fileContents);
-            var framesPerSecond = data.frames_per_second;
 
             var disappear1 = new List<float>() { 144217, 144455, 144693, 144931, 145169, 145407, 145526 };
-            GenerateEnd("11", ConvertFrame(4268, framesPerSecond), disappear1);
-            GenerateEnd("12", ConvertFrame(4272, framesPerSecond), disappear1);
-            GenerateEnd("13", ConvertFrame(4276, framesPerSecond), disappear1);
-            GenerateEnd("14", ConvertFrame(4283, framesPerSecond), disappear1);
-            GenerateEnd("15", ConvertFrame(4291, framesPerSecond), disappear1);
-            GenerateEnd("16", ConvertFrame(4302, framesPerSecond), disappear1);
+            GenerateEnd("11", Framing.Convert(4268), disappear1);
+            GenerateEnd("12", Framing.Convert(4272), disappear1);
+            GenerateEnd("13", Framing.Convert(4276), disappear1);
+            GenerateEnd("14", Framing.Convert(4283), disappear1);
+            GenerateEnd("15", Framing.Convert(4291), disappear1);
+            GenerateEnd("16", Framing.Convert(4302), disappear1);
 
             var disappear2 = new List<float>() { 147907, 148145, 148384, 148622, 148860, 149098, 149217 };
-            GenerateEnd("21", ConvertFrame(4382, framesPerSecond), disappear2);
-            GenerateEnd("22", ConvertFrame(4385, framesPerSecond), disappear2);
-            GenerateEnd("23", ConvertFrame(4390, framesPerSecond), disappear2);
-            GenerateEnd("24", ConvertFrame(4395, framesPerSecond), disappear2);
-            GenerateEnd("25", ConvertFrame(4404, framesPerSecond), disappear2);
-            GenerateEnd("26", ConvertFrame(4416, framesPerSecond), disappear2);
+            GenerateEnd("21", Framing.Convert(4382), disappear2);
+            GenerateEnd("22", Framing.Convert(4385), disappear2);
+            GenerateEnd("23", Framing.Convert(4390), disappear2);
+            GenerateEnd("24", Framing.Convert(4395), disappear2);
+            GenerateEnd("25", Framing.Convert(4404), disappear2);
+            GenerateEnd("26", Framing.Convert(4416), disappear2);
 
             var disappear3 = new List<float>() { 151836, 152074, 152312, 152550, 152788, 153026, 153145 };
-            GenerateEnd("31", ConvertFrame(4497, framesPerSecond), disappear3);
-            GenerateEnd("32", ConvertFrame(4500, framesPerSecond), disappear3);
-            GenerateEnd("33", ConvertFrame(4505, framesPerSecond), disappear3);
-            GenerateEnd("34", ConvertFrame(4511, framesPerSecond), disappear3);
-            GenerateEnd("35", ConvertFrame(4519, framesPerSecond), disappear3);
-            GenerateEnd("36", ConvertFrame(4531, framesPerSecond), disappear3);
+            GenerateEnd("31", Framing.Convert(4497), disappear3);
+            GenerateEnd("32", Framing.Convert(4500), disappear3);
+            GenerateEnd("33", Framing.Convert(4505), disappear3);
+            GenerateEnd("34", Framing.Convert(4511), disappear3);
+            GenerateEnd("35", Framing.Convert(4519), disappear3);
+            GenerateEnd("36", Framing.Convert(4531), disappear3);
 
             var disappear4 = new List<float>() { 157312, 157669, 158026, 158145, 158503, 158622, 158860, 158741, 158503, 158741, 159336, 159693, 159812, 160169, 160288, 160407, 160526, 160645, 160764, 161003, 161360, 161479, 161836, 162193 };
-            GenerateEnd("41", ConvertFrame(4618, framesPerSecond), disappear4);
-            GenerateEnd("42", ConvertFrame(4633, framesPerSecond), disappear4);
-            GenerateEnd("43", ConvertFrame(4647, framesPerSecond), disappear4);
-            GenerateEnd("44", ConvertFrame(4660, framesPerSecond), disappear4);
-            GenerateEnd("45", ConvertFrame(4670, framesPerSecond), disappear4);
-            GenerateEnd("46", ConvertFrame(4681, framesPerSecond), disappear4);
-            GenerateEnd("47", ConvertFrame(4690, framesPerSecond), disappear4);
+            GenerateEnd("41", Framing.Convert(4618), disappear4);
+            GenerateEnd("42", Framing.Convert(4633), disappear4);
+            GenerateEnd("43", Framing.Convert(4647), disappear4);
+            GenerateEnd("44", Framing.Convert(4660), disappear4);
+            GenerateEnd("45", Framing.Convert(4670), disappear4);
+            GenerateEnd("46", Framing.Convert(4681), disappear4);
+            GenerateEnd("47", Framing.Convert(4690), disappear4);
 
             var objects = data.objects;
 
@@ -197,7 +190,7 @@ namespace StorybrewScripts
                 foreach (var keyframe in obj)
                 {
                     var isLastFrame = keyframe.Key == obj.Last().Key;
-                    var time = ConvertFrame(keyframe.Key, framesPerSecond);
+                    var time = Framing.Convert(keyframe.Key);
                     var edgeDatas = keyframe.Value;
 
                     for (var j = 0; j < edgeDatas.Count; ++j)
