@@ -9,7 +9,7 @@ namespace StorybrewScripts
         public CommandColor startColor { get; set; }
         public CommandColor endColor { get; set; }
 
-        public static Timing Instant(float time, CommandColor color)
+        public static Timing New(float time, CommandColor color)
         {
             var timing = new Timing()
             {
@@ -21,7 +21,7 @@ namespace StorybrewScripts
             return timing;
         }
 
-        public static Timing Transition(float startTime, float endTime, CommandColor startColor, CommandColor endColor)
+        public static Timing New(float startTime, float endTime, CommandColor startColor, CommandColor endColor)
         {
             var timing = new Timing()
             {

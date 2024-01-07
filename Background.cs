@@ -9,19 +9,37 @@ namespace StorybrewScripts
     {
         private List<Timing> timings = new List<Timing>()
         {
-            Timing.Instant(0, Colors.Steel),
-            Timing.Instant(169, Colors.Red),
-            Timing.Instant(407, Colors.Blue),
-            Timing.Instant(586, Colors.Sun),
-            Timing.Instant(705, Colors.Tan),
-            Timing.Instant(824, Colors.Green),
-            Timing.Instant(943, Colors.Black),
-            Timing.Instant(1062, Colors.Red),
-            Timing.Instant(1479 , Colors.Blue),
-            Timing.Instant(1776, Colors.Sun),
-            Timing.Instant(2491, Colors.Green),
-            Timing.Transition(2907, 4872, Colors.Steel, Colors.White),
-        };
+            Framing.New(0, Colors.White),
+            Framing.New(7, Colors.Red),
+            Framing.New(14, Colors.Cyan),
+            Framing.New(21, Colors.Steel),
+            Framing.New(24, Colors.Blue),
+            Framing.New(27, Colors.Green),
+            Framing.New(30, Colors.Dark),
+
+            Framing.New(35, Colors.Red),
+            Framing.New(45, Colors.Sun),
+            Framing.New(55, Colors.Tan),
+            Framing.New(75, Colors.Brown),
+            Framing.New(85, 145, Colors.Steel, Colors.White),
+
+            Framing.New(145, 510, Colors.Dark, Colors.White),
+            Framing.New(521, Colors.Tan),
+            Framing.New(534, Colors.Brown),
+            Framing.New(544, Colors.Green),
+
+            Framing.New(577, Colors.Cyan),
+            Framing.New(650, 720, Colors.Cyan, Colors.White),
+            Framing.New(772, 820, Colors.White, Colors.Red),
+            Framing.New(890, 898, Colors.Red, Colors.White),
+            Framing.New(924, 938, Colors.White, Colors.Red),
+            Framing.New(992, 1007, Colors.Red, Colors.White),
+            Framing.New(1028, Colors.Red),
+            Framing.New(1033, Colors.White),
+            Framing.New(1035, Colors.Red),
+            Framing.New(1039, Colors.White),
+            Framing.New(1046, Colors.Red),
+    };
 
         public override void Generate()
         {

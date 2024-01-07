@@ -9,7 +9,7 @@ namespace StorybrewScripts
             return CommandColor.FromHsb(hue, saturation, brightness);
         }
 
-        public static CommandColor White = Hsb(252, 0.2, 0.99);
+        public static CommandColor White = Hsb(60, 0.01, 0.97);
 
         public static CommandColor Cyan = Hsb(205, 0.82, 0.73);
         public static CommandColor Steel = Hsb(235, 0.3, 0.5);
@@ -21,7 +21,9 @@ namespace StorybrewScripts
         public static CommandColor Tan = Hsb(46, 0.18, 0.66);
         public static CommandColor Brown = Hsb(31, 0.5, 0.31);
 
-        public static CommandColor Black = Hsb(33, 0.56, 0.18);
+        public static CommandColor Dark = Hsb(33, 0.56, 0.18);
+
+        public static CommandColor Black = Hsb(0, 0, 0);
 
         public static string GetSprite(CommandColor color)
         {
@@ -43,7 +45,7 @@ namespace StorybrewScripts
                 return "7.png";
             else if (color == Brown)
                 return "8.png";
-            else if (color == Black)
+            else if (color == Dark)
                 return "9.png";
 
             return "-1";

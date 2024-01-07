@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using OpenTK;
 using StorybrewCommon.Scripting;
 using StorybrewCommon.Storyboarding;
+using StorybrewCommon.Storyboarding.CommandValues;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,38 @@ namespace StorybrewScripts
 
     public class BlenderEdges : StoryboardObjectGenerator
     {
+        private List<Timing> timings = new List<Timing>()
+        {
+            Framing.New(0, Colors.White),
+
+            Framing.New(216, Colors.Sun),
+            Framing.New(329, Colors.Dark),
+            Framing.New(442, Colors.Green),
+            Framing.New(510, Colors.Tan),
+
+            Framing.New(596, Colors.White),
+            Framing.New(710, Colors.Cyan),
+            Framing.New(810, Colors.White),
+            Framing.New(888, Colors.Red),
+            Framing.New(928, Colors.White),
+            Framing.New(997, Colors.Red),
+            Framing.New(1028, Colors.White),
+            Framing.New(1033, Colors.Red),
+            Framing.New(1035, Colors.White),
+            Framing.New(1039, Colors.Red),
+            Framing.New(1046, Colors.White),
+        };
+
+        private CommandColor GetColor(float time)
+        {
+            for (var i = timings.Count - 1; i >= 0; --i)
+            {
+                if (timings[i].startTime <= time)
+                    return timings[i].startColor;
+            }
+            return Colors.White;
+        }
+
         /** Example data (for now?):
             {
                 frames_per_second: 30,
@@ -36,9 +69,9 @@ namespace StorybrewScripts
 
         public class Edge
         {
-            public Edge(StoryboardLayer layer, Vector2 start)
+            public Edge(StoryboardLayer layer, Vector2 start, string sprite)
             {
-                Sprite = layer.CreateSprite("w.png", OsbOrigin.CentreLeft, start);
+                Sprite = layer.CreateSprite(sprite, OsbOrigin.CentreLeft, start);
             }
 
             // Just copied some stuff from here??? https://stackoverflow.com/a/16544330
@@ -62,6 +95,8 @@ namespace StorybrewScripts
 
                 var rotation = LastRotation + AngleBetween(last, diff);
 
+                HasUpdated = false;
+
                 if (Sprite.CommandCount == 0) // Initial commands
                 {
                     Sprite.ScaleVec(time, scaleX, 1);
@@ -73,17 +108,20 @@ namespace StorybrewScripts
                     if (Math.Abs((start - LastPosition).Length) > Constants.MARGIN_OF_ERROR)
                     {
                         Sprite.Move(LastTime, time, LastPosition, start);
+                        HasUpdated = true;
                     }
 
                     if (Math.Abs(scaleX - LastScaleX) > Constants.MARGIN_OF_ERROR)
                     {
                         Sprite.ScaleVec(LastTime, time, LastScaleX, 1, scaleX, 1);
+                        HasUpdated = true;
                     }
 
                     // Hopefully for rotation this margin of error is small enough
                     if (Math.Abs(rotation - LastRotation) > Constants.MARGIN_OF_ERROR)
                     {
                         Sprite.Rotate(LastTime, time, LastRotation, rotation);
+                        HasUpdated = true;
                     }
                 }
 
@@ -95,7 +133,10 @@ namespace StorybrewScripts
 
             public void Disappear(float time)
             {
-                Sprite.Fade(time, time, 1, 0);
+                if (!HasUpdated)
+                {
+                    Sprite.Fade(time, time, 1, 0);
+                }
             }
 
             public OsbSprite Sprite { get; set; }
@@ -103,6 +144,9 @@ namespace StorybrewScripts
             private float LastScaleX { get; set; }
             private float LastRotation { get; set; }
             private float LastTime { get; set; }
+            // Keeps track if we updated in previous frame to determine if we
+            // need to Fade or not
+            private bool HasUpdated { get; set; }
         }
 
         // Blender position starts (0,0) at bottom left and goes from 0 to 1.
@@ -116,21 +160,24 @@ namespace StorybrewScripts
 
         private void GenerateEnd(string fileSuffix, float startTime, List<float> disappearTimes)
         {
-            // Hvae to GetLayer at top level
+            // Have to GetLayer at top level
             var layer = GetLayer("Main");
             var edges = new List<Edge>();
 
             var fileContents = File.ReadAllText($"projects/love/endstuff{fileSuffix}.001.json");
             var data = JsonConvert.DeserializeObject<List<List<float>>>(fileContents);
 
+            var color = GetColor(startTime);
+            var sprite = Colors.GetSprite(color);
+
             foreach (var edgeData in data)
             {
                 var start = ConvertPosition(new Vector2(edgeData[0], edgeData[1]));
                 var end = ConvertPosition(new Vector2(edgeData[2], edgeData[3]));
 
-                var edge = new Edge(layer, start);
-                edges.Add(edge);
+                var edge = new Edge(layer, start, sprite);
                 edge.UpdateSprite(startTime, start, end);
+                edges.Add(edge);
             }
 
             foreach (var edge in edges)
@@ -201,7 +248,9 @@ namespace StorybrewScripts
 
                         if (keyframe.Key == obj.First().Key)
                         {
-                            edges.Add(new Edge(layer, start));
+                            var color = GetColor(time);
+                            var sprite = Colors.GetSprite(color);
+                            edges.Add(new Edge(layer, start, sprite));
                         }
 
                         edges[j].UpdateSprite(time, start, end);

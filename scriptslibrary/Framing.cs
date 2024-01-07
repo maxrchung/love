@@ -15,7 +15,7 @@ namespace StorybrewScripts
             return toMilliseconds;
         }
 
-        public static Timing Instant(float frame, CommandColor color)
+        public static Timing New(float frame, CommandColor color)
         {
             var time = Convert(frame);
 
@@ -29,7 +29,7 @@ namespace StorybrewScripts
             return timing;
         }
 
-        public static Timing Transition(float startFrame, float endFrame, CommandColor startColor, CommandColor endColor)
+        public static Timing New(float startFrame, float endFrame, CommandColor startColor, CommandColor endColor)
         {
             var startTime = Convert(startFrame);
             var endTime = Convert(endFrame);
