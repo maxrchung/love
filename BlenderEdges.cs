@@ -23,6 +23,7 @@ namespace StorybrewScripts
             Framing.New(442, Colors.Green),
             Framing.New(510, Colors.Tan),
 
+            // Verse 1
             Framing.New(596, Colors.White),
             Framing.New(710, Colors.Cyan),
             Framing.New(810, Colors.White),
@@ -34,6 +35,38 @@ namespace StorybrewScripts
             Framing.New(1035, Colors.White),
             Framing.New(1039, Colors.Red),
             Framing.New(1046, Colors.White),
+
+            // Mou
+            Framing.New(1060, Colors.Cyan),
+            Framing.New(1135, Colors.White),
+            Framing.New(1187, Colors.Dark),
+            Framing.New(1240, Colors.Sun),
+            Framing.New(1276, Colors.White),
+            Framing.New(1316, Colors.Dark),
+            Framing.New(1366, Colors.White),
+            Framing.New(1423, Colors.Sun),
+            Framing.New(1485, Colors.Dark),
+
+            Framing.New(1584, Colors.Dark),
+            Framing.New(1698, Colors.Brown),
+            Framing.New(1812, Colors.Tan),
+            Framing.New(1877, Colors.White),
+            Framing.New(1916, Colors.Red),
+
+            Framing.New(1964, Colors.Blue),
+            Framing.New(2008, Colors.Red),
+            Framing.New(2075, Colors.Blue),
+            Framing.New(2123, Colors.Red),
+            Framing.New(2190, Colors.Blue),
+            Framing.New(2235, Colors.Red),
+            Framing.New(2304, Colors.Blue),
+            Framing.New(2344, Colors.Red),
+
+            Framing.New(2397, Colors.Blue),
+            Framing.New(2401, Colors.Red),
+            Framing.New(2406, Colors.Blue),
+            Framing.New(2411, Colors.Red),
+
         };
 
         private CommandColor GetColor(float time)
