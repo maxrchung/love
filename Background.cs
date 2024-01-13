@@ -64,8 +64,7 @@ namespace StorybrewScripts
 
             Framing.New(2429, 2649, Colors.White, Colors.Dark),
             Framing.New(2649, Colors.White),
-            Framing.New(2653, Colors.Dark),
-            Framing.New(2657, 2840, Colors.Dark, Colors.White),
+            Framing.New(2653, 2840, Colors.Dark, Colors.Steel),
 
             // yeah yeah
             Framing.New(2841, Colors.Sun),
@@ -120,7 +119,89 @@ namespace StorybrewScripts
             Framing.New(3304, Colors.Sun),
             Framing.New(3312, Colors.White),
             Framing.New(3326, Colors.Sun),
-    };
+
+            Framing.New(3344, 3562, Colors.Cyan, Colors.Blue),
+            Framing.New(3567, Colors.White),
+            Framing.New(3571, 3746, Colors.Blue, Colors.Steel),
+
+            Framing.New(3754, Colors.White),
+            Framing.New(3756, Colors.Cyan),
+            Framing.New(3765, Colors.Brown),
+            Framing.New(3770, Colors.Tan),
+
+            Framing.New(3777, Colors.Steel),
+            Framing.New(3780, Colors.Sun),
+            Framing.New(3784, Colors.White),
+            Framing.New(3788, Colors.Blue),
+            Framing.New(3791, Colors.Green),
+            Framing.New(3794, Colors.Dark),
+            Framing.New(3798, Colors.White),
+            Framing.New(3801, Colors.Cyan),
+
+            Framing.New(4018, Colors.Steel),
+
+            Framing.New(4045, Colors.Steel),
+            Framing.New(4105, Colors.White),
+            Framing.New(4163, Colors.Red),
+            Framing.New(4227, Colors.White),
+
+            Framing.New(4268, Colors.Dark),
+            Timing.New(144217, Colors.Red),
+            Timing.New(144455, Colors.Tan),
+            Timing.New(144693, Colors.Brown),
+            Timing.New(144931, Colors.Steel),
+            Timing.New(145169, Colors.Green),
+            Timing.New(145407, Colors.Sun),
+            Timing.New(145526, Colors.Cyan),
+            Timing.New(145764, Colors.Dark),
+
+            Framing.New(4382, Colors.White),
+            Timing.New(147907, Colors.Blue),
+            Timing.New(148145, Colors.Cyan),
+            Timing.New(148384, Colors.Sun),
+            Timing.New(148622, Colors.Steel),
+            Timing.New(148860, Colors.Brown),
+            Timing.New(149098, Colors.Tan),
+            Timing.New(149217, Colors.Red),
+            Timing.New(149574, Colors.White),
+
+            Framing.New(4497, Colors.Blue),
+            Timing.New(151836, Colors.Brown),
+            Timing.New(152074, Colors.Steel),
+            Timing.New(152312, Colors.Red),
+            Timing.New(152550, Colors.Green),
+            Timing.New(152788, Colors.Cyan),
+            Timing.New(153026, Colors.White),
+            Timing.New(153145, Colors.Dark),
+            Timing.New(153384, Colors.Blue),
+
+            Framing.New(4618, Colors.White),
+            Timing.New(157312, Colors.Cyan),
+            Timing.New(157669, Colors.Sun),
+            Timing.New(158026, Colors.Blue),
+            Timing.New(158145, Colors.White),
+            Timing.New(158503, Colors.Dark),
+            Timing.New(158622, Colors.Tan),
+            Timing.New(158860, Colors.Brown),
+            Timing.New(158741, Colors.Green),
+            Timing.New(158503, Colors.Cyan),
+            Timing.New(158741, Colors.White),
+            Timing.New(159336, Colors.Dark),
+            Timing.New(159693, Colors.Sun),
+            Timing.New(159812, Colors.Brown),
+            Timing.New(160169, Colors.Blue),
+            Timing.New(160288, Colors.Steel),
+            Timing.New(160407, Colors.Green),
+            Timing.New(160526, Colors.Tan),
+            Timing.New(160645, Colors.Cyan),
+            Timing.New(160764, Colors.White),
+            Timing.New(161003, Colors.Cyan),
+            Timing.New(161360, Colors.Dark),
+            Timing.New(161479, Colors.Sun),
+            Timing.New(161836, Colors.Green),
+            Timing.New(162193, Colors.Blue),
+            Framing.New(4876, Colors.White),
+        };
 
         public override void Generate()
         {
@@ -142,10 +223,28 @@ namespace StorybrewScripts
                 else
                 {
                     bg.Color(OsbEasing.In, timing.startTime, timing.endTime, timing.startColor, timing.endColor);
-
                 }
             }
 
+            // Hide to show bg slides
+            bg.Fade(Framing.Convert(3819), Framing.Convert(3819), 1, 0);
+
+            var bg3 = layer.CreateSprite("m.jpg", OsbOrigin.TopLeft, new Vector2(-108, -1));
+            bg3.ScaleVec(Framing.Convert(3920), new Vector2(0.46f, 0.46f));
+            bg3.Color(Framing.Convert(3920), Colors.Dark);
+            bg3.MoveX(OsbEasing.Out, Framing.Convert(4018), Framing.Convert(4030), -108, -108 - 855);
+
+            var bg2 = layer.CreateSprite("m.jpg", OsbOrigin.TopLeft, new Vector2(-108, -1));
+            bg2.ScaleVec(Framing.Convert(3865), new Vector2(0.46f, 0.46f));
+            bg2.Color(Framing.Convert(3865), Colors.Sun);
+            bg2.MoveX(OsbEasing.Out, Framing.Convert(3920), Framing.Convert(3932), -108, -108 - 855);
+
+            var bg1 = layer.CreateSprite("m.jpg", OsbOrigin.TopLeft, new Vector2(-108, -1));
+            bg1.ScaleVec(Framing.Convert(3819), new Vector2(0.46f, 0.46f));
+            bg1.Color(Framing.Convert(3819), Colors.Cyan);
+            bg1.MoveX(OsbEasing.Out, Framing.Convert(3865), Framing.Convert(3877), -108, -108 - 855);
+
+            bg.Fade(Framing.Convert(4018), 1);
             bg.Fade(170000, 170000, 1, 0);
         }
     }

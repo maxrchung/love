@@ -68,8 +68,8 @@ namespace StorybrewScripts
             Framing.New(2411, Colors.Red),
 
             Framing.New(2429, Colors.Cyan),
-            //Framing.New(2638, Colors.White),
-            //Framing.New(2685, Colors.Cyan),
+            Framing.New(2638, Colors.White),
+            Framing.New(2685, Colors.Cyan),
 
             // yeah yeah
             Framing.New(2841, Colors.Dark),
@@ -124,6 +124,29 @@ namespace StorybrewScripts
             Framing.New(3304, Colors.White),
             Framing.New(3312, Colors.Sun),
             Framing.New(3326, Colors.Red),
+
+            Framing.New(3344, Colors.White),
+            Framing.New(3375, Colors.Dark),
+            Framing.New(3433, Colors.White),
+            Framing.New(3483, Colors.Dark),
+            Framing.New(3527, Colors.White),
+            Framing.New(3562, Colors.Dark),
+            Framing.New(3613, Colors.White),
+            Framing.New(3662, Colors.Dark),
+            // Hackerman
+            Framing.New(3663, Colors.Red),
+
+            Framing.New(3819, Colors.White),
+
+            Framing.New(4045, Colors.White),
+            Framing.New(4105, Colors.Red),
+            Framing.New(4163, Colors.White),
+            Framing.New(4227, Colors.Steel),
+
+            Framing.New(4268, Colors.White),
+            Framing.New(4382, Colors.Dark),
+            Framing.New(4497, Colors.Sun),
+            Framing.New(4618, Colors.Red)
         };
 
         private CommandColor GetColor(float time)
@@ -282,7 +305,7 @@ namespace StorybrewScripts
             var fileContents = File.ReadAllText("projects/love/love.json");
             var data = JsonConvert.DeserializeObject<BlenderData>(fileContents);
 
-            var disappear1 = new List<float>() { 144217, 144455, 144693, 144931, 145169, 145407, 145526 };
+            var disappear1 = new List<float>() { 144217, 144455, 144693, 144931, 145169, 145407, 145526, 145764 };
             GenerateEnd("11", Framing.Convert(4268), disappear1);
             GenerateEnd("12", Framing.Convert(4272), disappear1);
             GenerateEnd("13", Framing.Convert(4276), disappear1);
@@ -290,7 +313,7 @@ namespace StorybrewScripts
             GenerateEnd("15", Framing.Convert(4291), disappear1);
             GenerateEnd("16", Framing.Convert(4302), disappear1);
 
-            var disappear2 = new List<float>() { 147907, 148145, 148384, 148622, 148860, 149098, 149217 };
+            var disappear2 = new List<float>() { 147907, 148145, 148384, 148622, 148860, 149098, 149217, 149574 };
             GenerateEnd("21", Framing.Convert(4382), disappear2);
             GenerateEnd("22", Framing.Convert(4385), disappear2);
             GenerateEnd("23", Framing.Convert(4390), disappear2);
@@ -298,7 +321,7 @@ namespace StorybrewScripts
             GenerateEnd("25", Framing.Convert(4404), disappear2);
             GenerateEnd("26", Framing.Convert(4416), disappear2);
 
-            var disappear3 = new List<float>() { 151836, 152074, 152312, 152550, 152788, 153026, 153145 };
+            var disappear3 = new List<float>() { 151836, 152074, 152312, 152550, 152788, 153026, 153145, 153384 };
             GenerateEnd("31", Framing.Convert(4497), disappear3);
             GenerateEnd("32", Framing.Convert(4500), disappear3);
             GenerateEnd("33", Framing.Convert(4505), disappear3);
