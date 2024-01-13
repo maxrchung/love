@@ -16,7 +16,7 @@ namespace StorybrewScripts
         public static CommandColor Blue = Hsb(234, 0.47, 0.34);
         public static CommandColor Green = Hsb(86, 0.26, 0.26);
 
-        public static CommandColor Red = Hsb(7.43, 0.98, 0.83);
+        public static CommandColor Red = Hsb(7.43, 0.98, 0.77);
         public static CommandColor Sun = Hsb(37, 0.54, 0.96);
         public static CommandColor Tan = Hsb(46, 0.18, 0.66);
         public static CommandColor Brown = Hsb(31, 0.5, 0.31);

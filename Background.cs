@@ -3,6 +3,10 @@ using StorybrewCommon.Scripting;
 using StorybrewCommon.Storyboarding;
 using System.Collections.Generic;
 
+// TODO:
+// Make 01:24:370 section come in character by character
+// Think of karaoke similar style for 01:52:801
+
 namespace StorybrewScripts
 {
     public class Background : StoryboardObjectGenerator
@@ -42,7 +46,8 @@ namespace StorybrewScripts
             Framing.New(1046, Colors.Red),
 
             Framing.New(1060, 1276, Colors.Blue, Colors.Cyan),
-            Framing.New(1276, Colors.White),
+            Framing.New(1276, Colors.Blue),
+            Framing.New(1278, Colors.White),
             Framing.New(1280, 1485, Colors.Cyan, Colors.Steel),
             Framing.New(1485, 1526, Colors.Steel, Colors.White),
 
@@ -63,7 +68,8 @@ namespace StorybrewScripts
             Framing.New(2411, Colors.Blue),
 
             Framing.New(2429, 2649, Colors.White, Colors.Dark),
-            Framing.New(2649, Colors.White),
+            Framing.New(2649, Colors.Sun),
+            Framing.New(2651, Colors.White),
             Framing.New(2653, 2840, Colors.Dark, Colors.Steel),
 
             // yeah yeah
@@ -120,9 +126,10 @@ namespace StorybrewScripts
             Framing.New(3312, Colors.White),
             Framing.New(3326, Colors.Sun),
 
-            Framing.New(3344, 3562, Colors.Cyan, Colors.Blue),
-            Framing.New(3567, Colors.White),
-            Framing.New(3571, 3746, Colors.Blue, Colors.Steel),
+            Framing.New(3344, 3567, Colors.Cyan, Colors.Tan),
+            Framing.New(3567, Colors.Sun),
+            Framing.New(3569, Colors.White),
+            Framing.New(3571, 3746, Colors.Tan, Colors.Blue),
 
             Framing.New(3754, Colors.White),
             Framing.New(3756, Colors.Cyan),
@@ -236,7 +243,7 @@ namespace StorybrewScripts
 
             var bg2 = layer.CreateSprite("m.jpg", OsbOrigin.TopLeft, new Vector2(-108, -1));
             bg2.ScaleVec(Framing.Convert(3865), new Vector2(0.46f, 0.46f));
-            bg2.Color(Framing.Convert(3865), Colors.Sun);
+            bg2.Color(Framing.Convert(3865), Colors.Green);
             bg2.MoveX(OsbEasing.Out, Framing.Convert(3920), Framing.Convert(3932), -108, -108 - 855);
 
             var bg1 = layer.CreateSprite("m.jpg", OsbOrigin.TopLeft, new Vector2(-108, -1));
