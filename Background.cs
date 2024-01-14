@@ -34,16 +34,16 @@ namespace StorybrewScripts
 
             // Verse 1
             Framing.New(577, Colors.Cyan),
-            Framing.New(650, 720, Colors.Cyan, Colors.White),
-            Framing.New(772, 820, Colors.White, Colors.Red),
-            Framing.New(890, 898, Colors.Red, Colors.White),
-            Framing.New(924, 938, Colors.White, Colors.Red),
-            Framing.New(992, 1007, Colors.Red, Colors.White),
-            Framing.New(1028, Colors.Red),
+            Framing.New(646, 718, Colors.Cyan, Colors.White),
+            Framing.New(771, 818, Colors.White, Colors.Red),
+            Framing.New(887, 898, Colors.Red, Colors.White),
+            Framing.New(923, 934, Colors.White, Colors.Red),
+            Framing.New(992, 1006, Colors.Red, Colors.White),
+            Framing.New(1027, Colors.Red),
             Framing.New(1033, Colors.White),
             Framing.New(1035, Colors.Red),
             Framing.New(1039, Colors.White),
-            Framing.New(1046, Colors.Red),
+            Framing.New(1043, Colors.Red),
 
             Framing.New(1060, 1276, Colors.Blue, Colors.Cyan),
             Framing.New(1276, Colors.Blue),
