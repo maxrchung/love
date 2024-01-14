@@ -45,7 +45,7 @@ namespace StorybrewScripts
             Framing.New(1039, Colors.White),
             Framing.New(1043, Colors.Red),
 
-            Framing.New(1060, 1276, Colors.Blue, Colors.Cyan),
+            Framing.New(1058, 1276, Colors.Blue, Colors.Cyan),
             Framing.New(1276, Colors.Blue),
             Framing.New(1278, Colors.White),
             Framing.New(1280, 1485, Colors.Cyan, Colors.Steel),
