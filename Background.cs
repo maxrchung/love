@@ -54,23 +54,23 @@ namespace StorybrewScripts
             Framing.New(1526, 1916, Colors.White, Colors.Green),
             Framing.New(1916, 1949, Colors.Green, Colors.Red),
 
-            Framing.New(2004, 2048,  Colors.Red, Colors.Blue),
-            Framing.New(2048, 2115, Colors.Blue, Colors.Red),
-            Framing.New(2115, 2162, Colors.Red, Colors.Blue),
-            Framing.New(2162, 2230, Colors.Blue, Colors.Red),
+            Framing.New(2004, 2047,  Colors.Red, Colors.Blue),
+            Framing.New(2047, 2115, Colors.Blue, Colors.Red),
+            Framing.New(2115, 2161, Colors.Red, Colors.Blue),
+            Framing.New(2161, 2230, Colors.Blue, Colors.Red),
             Framing.New(2230, 2275, Colors.Red, Colors.Blue),
             Framing.New(2275, 2344, Colors.Blue, Colors.Red),
             Framing.New(2344, 2383, Colors.Red, Colors.Blue),
 
             Framing.New(2397, Colors.Red),
             Framing.New(2401, Colors.Blue),
-            Framing.New(2406, Colors.Red),
+            Framing.New(2405, Colors.Red),
             Framing.New(2411, Colors.Blue),
 
-            Framing.New(2429, 2649, Colors.White, Colors.Dark),
-            Framing.New(2649, Colors.Sun),
-            Framing.New(2651, Colors.White),
-            Framing.New(2653, 2840, Colors.Dark, Colors.Steel),
+            Framing.New(2428, 2647, Colors.White, Colors.Dark),
+            Framing.New(2647, Colors.Sun),
+            Framing.New(2649, Colors.White),
+            Framing.New(2651, 2840, Colors.Dark, Colors.Steel),
 
             // yeah yeah
             Framing.New(2841, Colors.Sun),
