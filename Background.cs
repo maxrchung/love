@@ -6,6 +6,8 @@ using System.Collections.Generic;
 // TODO:
 // Make 01:24:370 section come in character by character
 // Think of karaoke similar style for 01:52:801
+// Fix flash timings
+// Maybe regenerate yeah yeah
 
 namespace StorybrewScripts
 {
@@ -73,55 +75,55 @@ namespace StorybrewScripts
             Framing.New(2651, 2840, Colors.Dark, Colors.Steel),
 
             // yeah yeah
-            Framing.New(2841, Colors.Sun),
-            Framing.New(2855, Colors.Dark),
-            Framing.New(2877, Colors.Sun),
-            Framing.New(2883, Colors.White),
+            Framing.New(2840, Colors.Sun),
+            Framing.New(2854, Colors.Dark),
+            Framing.New(2876, Colors.Sun),
+            Framing.New(2882, Colors.White),
             Framing.New(2890, Colors.Sun),
-            Framing.New(2905, Colors.Red),
-            Framing.New(2913, Colors.Dark),
+            Framing.New(2904, Colors.Red),
+            Framing.New(2911, Colors.Dark),
             Framing.New(2930, Colors.Red),
             Framing.New(2941, Colors.Sun),
             Framing.New(2951, Colors.White),
             Framing.New(2962, Colors.Red),
             Framing.New(2966, Colors.Dark),
-            Framing.New(2984, Colors.Sun),
+            Framing.New(2983, Colors.Sun),
             Framing.New(2993, Colors.White),
-            Framing.New(3001, Colors.Sun),
+            Framing.New(3000, Colors.Sun),
             Framing.New(3004, Colors.Dark),
             Framing.New(3013, Colors.White),
-            Framing.New(3017, Colors.Sun),
+            Framing.New(3016, Colors.Sun),
             Framing.New(3022, Colors.White),
-            Framing.New(3030, Colors.Dark),
+            Framing.New(3029, Colors.Dark),
             Framing.New(3033, Colors.Red),
-            Framing.New(3041, Colors.Dark),
-            Framing.New(3046, Colors.White),
+            Framing.New(3040, Colors.Dark),
+            Framing.New(3045, Colors.White),
             Framing.New(3051, Colors.Dark),
             Framing.New(3061, Colors.Sun),
             Framing.New(3076, Colors.Red),
             Framing.New(3082, Colors.Sun),
-            Framing.New(3087, Colors.Dark),
+            Framing.New(3086, Colors.Dark),
             Framing.New(3097, Colors.Red),
-            Framing.New(3108, Colors.Sun),
-            Framing.New(3118, Colors.White),
-            Framing.New(3128, Colors.Sun),
-            Framing.New(3134, Colors.Dark),
-            Framing.New(3148, Colors.White),
-            Framing.New(3166, Colors.Red),
+            Framing.New(3107, Colors.Sun),
+            Framing.New(3112, Colors.White),
+            Framing.New(3127, Colors.Sun),
+            Framing.New(3133, Colors.Dark),
+            Framing.New(3147, Colors.White),
+            Framing.New(3165, Colors.Red),
             Framing.New(3173, Colors.Dark),
-            Framing.New(3178, Colors.Red),
-            Framing.New(3191, Colors.Sun),
-            Framing.New(3199, Colors.Dark),
-            Framing.New(3230, Colors.Sun),
+            Framing.New(3177, Colors.Red),
+            Framing.New(3190, Colors.Sun),
+            Framing.New(3200, Colors.Dark),
+            Framing.New(3229, Colors.Sun),
             Framing.New(3241, Colors.Dark),
             Framing.New(3246, Colors.Red),
             Framing.New(3252, Colors.Dark),
             Framing.New(3257, Colors.Red),
             Framing.New(3262, Colors.White),
-            Framing.New(3285, Colors.Red),
+            Framing.New(3284, Colors.Red),
             Framing.New(3291, Colors.Dark),
             Framing.New(3299, Colors.Red),
-            Framing.New(3302, Colors.White),
+            Framing.New(3301, Colors.White),
             Framing.New(3304, Colors.Sun),
             Framing.New(3312, Colors.White),
             Framing.New(3326, Colors.Sun),
@@ -147,12 +149,12 @@ namespace StorybrewScripts
 
             Framing.New(4018, Colors.Steel),
 
-            Framing.New(4045, Colors.Steel),
-            Framing.New(4105, Colors.White),
-            Framing.New(4163, Colors.Red),
-            Framing.New(4227, Colors.White),
+            Framing.New(4044, Colors.Steel),
+            Framing.New(4104, Colors.White),
+            Framing.New(4162, Colors.Red),
+            Framing.New(4226, Colors.White),
 
-            Framing.New(4268, Colors.Dark),
+            Framing.New(4267, Colors.Dark),
             Timing.New(144217, Colors.Red),
             Timing.New(144455, Colors.Tan),
             Timing.New(144693, Colors.Brown),
@@ -172,7 +174,7 @@ namespace StorybrewScripts
             Timing.New(149217, Colors.Red),
             Timing.New(149574, Colors.White),
 
-            Framing.New(4497, Colors.Blue),
+            Framing.New(4496, Colors.Blue),
             Timing.New(151836, Colors.Brown),
             Timing.New(152074, Colors.Steel),
             Timing.New(152312, Colors.Red),
@@ -188,21 +190,17 @@ namespace StorybrewScripts
             Timing.New(158026, Colors.Blue),
             Timing.New(158145, Colors.White),
             Timing.New(158503, Colors.Dark),
-            Timing.New(158622, Colors.Tan),
-            Timing.New(158860, Colors.Brown),
             Timing.New(158741, Colors.Green),
-            Timing.New(158503, Colors.Cyan),
-            Timing.New(158741, Colors.White),
+            Timing.New(158860, Colors.Brown),
+            Timing.New(158979, Colors.Tan),
             Timing.New(159336, Colors.Dark),
             Timing.New(159693, Colors.Sun),
             Timing.New(159812, Colors.Brown),
             Timing.New(160169, Colors.Blue),
-            Timing.New(160288, Colors.Steel),
             Timing.New(160407, Colors.Green),
             Timing.New(160526, Colors.Tan),
             Timing.New(160645, Colors.Cyan),
-            Timing.New(160764, Colors.White),
-            Timing.New(161003, Colors.Cyan),
+            Timing.New(161003, Colors.White),
             Timing.New(161360, Colors.Dark),
             Timing.New(161479, Colors.Sun),
             Timing.New(161836, Colors.Green),
@@ -234,24 +232,21 @@ namespace StorybrewScripts
             }
 
             // Hide to show bg slides
-            bg.Fade(Framing.Convert(3819), Framing.Convert(3819), 1, 0);
+            bg.Fade(Framing.Convert(3818), Framing.Convert(3818), 1, 0);
 
             var bg3 = layer.CreateSprite("m.jpg", OsbOrigin.TopLeft, new Vector2(-108, -1));
-            bg3.ScaleVec(Framing.Convert(3920), new Vector2(0.46f, 0.46f));
             bg3.Color(Framing.Convert(3920), Colors.Dark);
-            bg3.MoveX(OsbEasing.Out, Framing.Convert(4018), Framing.Convert(4030), -108, -108 - 855);
+            bg3.ScaleVec(OsbEasing.Out, Framing.Convert(4017), Framing.Convert(4030), new Vector2(0.46f, 0.46f), new Vector2(0, 0.46f));
 
             var bg2 = layer.CreateSprite("m.jpg", OsbOrigin.TopLeft, new Vector2(-108, -1));
-            bg2.ScaleVec(Framing.Convert(3865), new Vector2(0.46f, 0.46f));
             bg2.Color(Framing.Convert(3865), Colors.Green);
-            bg2.MoveX(OsbEasing.Out, Framing.Convert(3920), Framing.Convert(3932), -108, -108 - 855);
+            bg2.ScaleVec(OsbEasing.Out, Framing.Convert(3920), Framing.Convert(3932), new Vector2(0.46f, 0.46f), new Vector2(0, 0.46f));
 
             var bg1 = layer.CreateSprite("m.jpg", OsbOrigin.TopLeft, new Vector2(-108, -1));
-            bg1.ScaleVec(Framing.Convert(3819), new Vector2(0.46f, 0.46f));
-            bg1.Color(Framing.Convert(3819), Colors.Cyan);
-            bg1.MoveX(OsbEasing.Out, Framing.Convert(3865), Framing.Convert(3877), -108, -108 - 855);
+            bg1.Color(Framing.Convert(3818), Colors.Cyan);
+            bg1.ScaleVec(OsbEasing.Out, Framing.Convert(3863), Framing.Convert(3876), new Vector2(0.46f, 0.46f), new Vector2(0, 0.46f));
 
-            bg.Fade(Framing.Convert(4018), 1);
+            bg.Fade(Framing.Convert(4017), 1);
             bg.Fade(170000, 170000, 1, 0);
         }
     }

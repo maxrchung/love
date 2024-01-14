@@ -71,56 +71,59 @@ namespace StorybrewScripts
             Framing.New(2636, Colors.White),
             Framing.New(2684, Colors.Cyan),
 
+            // Note that there's a frame delay between mou and yeah sections to
+            // account for camera transition
+
             // yeah yeah
-            Framing.New(2841, Colors.Dark),
-            Framing.New(2855, Colors.Sun),
-            Framing.New(2877, Colors.Red),
-            Framing.New(2883, Colors.Sun),
+            Framing.New(2840, Colors.Dark),
+            Framing.New(2854, Colors.Sun),
+            Framing.New(2876, Colors.Red),
+            Framing.New(2882, Colors.Sun),
             Framing.New(2890, Colors.Dark),
-            Framing.New(2905, Colors.Sun),
-            Framing.New(2913, Colors.White),
+            Framing.New(2904, Colors.Sun),
+            Framing.New(2911, Colors.White),
             Framing.New(2930, Colors.Dark),
             Framing.New(2941, Colors.White),
             Framing.New(2951, Colors.Red),
             Framing.New(2962, Colors.Dark),
             Framing.New(2966, Colors.Sun),
-            Framing.New(2984, Colors.White),
+            Framing.New(2983, Colors.White),
             Framing.New(2993, Colors.Dark),
-            Framing.New(3001, Colors.Red),
+            Framing.New(3000, Colors.Red),
             Framing.New(3004, Colors.Sun),
             Framing.New(3013, Colors.Dark),
-            Framing.New(3017, Colors.Red),
+            Framing.New(3016, Colors.Red),
             Framing.New(3022, Colors.Dark),
-            Framing.New(3030, Colors.Red),
+            Framing.New(3029, Colors.Red),
             Framing.New(3033, Colors.Sun),
-            Framing.New(3041, Colors.Red),
-            Framing.New(3046, Colors.Sun),
+            Framing.New(3040, Colors.Red),
+            Framing.New(3045, Colors.Sun),
             Framing.New(3051, Colors.White),
             Framing.New(3061, Colors.Dark),
             Framing.New(3076, Colors.White),
             Framing.New(3082, Colors.Red),
-            Framing.New(3087, Colors.Sun),
+            Framing.New(3086, Colors.Sun),
             Framing.New(3097, Colors.Dark),
-            Framing.New(3108, Colors.White),
-            Framing.New(3118, Colors.Sun),
-            Framing.New(3128, Colors.White),
-            Framing.New(3134, Colors.Red),
-            Framing.New(3148, Colors.Sun),
-            Framing.New(3166, Colors.Dark),
+            Framing.New(3107, Colors.White),
+            Framing.New(3112, Colors.Sun),
+            Framing.New(3127, Colors.White),
+            Framing.New(3133, Colors.Red),
+            Framing.New(3147, Colors.Sun),
+            Framing.New(3165, Colors.Dark),
             Framing.New(3173, Colors.Red),
-            Framing.New(3178, Colors.White),
-            Framing.New(3191, Colors.Red),
-            Framing.New(3199, Colors.White),
-            Framing.New(3230, Colors.Red),
+            Framing.New(3177, Colors.White),
+            Framing.New(3190, Colors.Red),
+            Framing.New(3200, Colors.White),
+            Framing.New(3229, Colors.Red),
             Framing.New(3241, Colors.White),
             Framing.New(3246, Colors.Dark),
             Framing.New(3252, Colors.Red),
             Framing.New(3257, Colors.White),
             Framing.New(3262, Colors.Sun),
-            Framing.New(3285, Colors.White),
+            Framing.New(3284, Colors.White),
             Framing.New(3291, Colors.Red),
             Framing.New(3299, Colors.White),
-            Framing.New(3302, Colors.Dark),
+            Framing.New(3301, Colors.Dark),
             Framing.New(3304, Colors.White),
             Framing.New(3312, Colors.Sun),
             Framing.New(3326, Colors.Red),
@@ -136,16 +139,16 @@ namespace StorybrewScripts
             // Hackerman
             Framing.New(3663, Colors.Red),
 
-            Framing.New(3819, Colors.White),
+            Framing.New(3818, Colors.White),
 
-            Framing.New(4045, Colors.White),
-            Framing.New(4105, Colors.Red),
-            Framing.New(4163, Colors.White),
-            Framing.New(4227, Colors.Steel),
+            Framing.New(4044, Colors.White),
+            Framing.New(4104, Colors.Red),
+            Framing.New(4162, Colors.White),
+            Framing.New(4226, Colors.Steel),
 
-            Framing.New(4268, Colors.White),
+            Framing.New(4267, Colors.White),
             Framing.New(4382, Colors.Dark),
-            Framing.New(4497, Colors.Sun),
+            Framing.New(4496, Colors.Sun),
             Framing.New(4618, Colors.Red)
         };
 
@@ -306,12 +309,12 @@ namespace StorybrewScripts
             var data = JsonConvert.DeserializeObject<BlenderData>(fileContents);
 
             var disappear1 = new List<float>() { 144217, 144455, 144693, 144931, 145169, 145407, 145526, 145764 };
-            GenerateEnd("11", Framing.Convert(4268), disappear1);
-            GenerateEnd("12", Framing.Convert(4272), disappear1);
-            GenerateEnd("13", Framing.Convert(4276), disappear1);
-            GenerateEnd("14", Framing.Convert(4283), disappear1);
-            GenerateEnd("15", Framing.Convert(4291), disappear1);
-            GenerateEnd("16", Framing.Convert(4302), disappear1);
+            GenerateEnd("11", Framing.Convert(4267), disappear1);
+            GenerateEnd("12", Framing.Convert(4271), disappear1);
+            GenerateEnd("13", Framing.Convert(4275), disappear1);
+            GenerateEnd("14", Framing.Convert(4282), disappear1);
+            GenerateEnd("15", Framing.Convert(4290), disappear1);
+            GenerateEnd("16", Framing.Convert(4301), disappear1);
 
             var disappear2 = new List<float>() { 147907, 148145, 148384, 148622, 148860, 149098, 149217, 149574 };
             GenerateEnd("21", Framing.Convert(4382), disappear2);
@@ -319,24 +322,24 @@ namespace StorybrewScripts
             GenerateEnd("23", Framing.Convert(4390), disappear2);
             GenerateEnd("24", Framing.Convert(4395), disappear2);
             GenerateEnd("25", Framing.Convert(4404), disappear2);
-            GenerateEnd("26", Framing.Convert(4416), disappear2);
+            GenerateEnd("26", Framing.Convert(4415), disappear2);
 
             var disappear3 = new List<float>() { 151836, 152074, 152312, 152550, 152788, 153026, 153145, 153384 };
-            GenerateEnd("31", Framing.Convert(4497), disappear3);
+            GenerateEnd("31", Framing.Convert(4496), disappear3);
             GenerateEnd("32", Framing.Convert(4500), disappear3);
-            GenerateEnd("33", Framing.Convert(4505), disappear3);
+            GenerateEnd("33", Framing.Convert(4504), disappear3);
             GenerateEnd("34", Framing.Convert(4511), disappear3);
-            GenerateEnd("35", Framing.Convert(4519), disappear3);
-            GenerateEnd("36", Framing.Convert(4531), disappear3);
+            GenerateEnd("35", Framing.Convert(4518), disappear3);
+            GenerateEnd("36", Framing.Convert(4530), disappear3);
 
-            var disappear4 = new List<float>() { 157312, 157669, 158026, 158145, 158503, 158622, 158860, 158741, 158503, 158741, 159336, 159693, 159812, 160169, 160288, 160407, 160526, 160645, 160764, 161003, 161360, 161479, 161836, 162193 };
+            var disappear4 = new List<float>() { 157312, 157669, 158026, 158145, 158503, 158741, 158860, 158979, 159336, 159693, 159812, 160169, 160407, 160526, 160645, 161003, 161360, 161479, 161836, 162193 };
             GenerateEnd("41", Framing.Convert(4618), disappear4);
-            GenerateEnd("42", Framing.Convert(4633), disappear4);
+            GenerateEnd("42", Framing.Convert(4632), disappear4);
             GenerateEnd("43", Framing.Convert(4647), disappear4);
-            GenerateEnd("44", Framing.Convert(4660), disappear4);
+            GenerateEnd("44", Framing.Convert(4659), disappear4);
             GenerateEnd("45", Framing.Convert(4670), disappear4);
             GenerateEnd("46", Framing.Convert(4681), disappear4);
-            GenerateEnd("47", Framing.Convert(4690), disappear4);
+            GenerateEnd("47", Framing.Convert(4689), disappear4);
 
             var objects = data.objects;
 
