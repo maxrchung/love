@@ -18,10 +18,10 @@ namespace StorybrewScripts
         {
             Framing.New(0, Colors.White),
 
-            Framing.New(216, Colors.Sun),
-            Framing.New(329, Colors.Dark),
-            Framing.New(442, Colors.Green),
-            Framing.New(510, Colors.Tan),
+            Framing.New(212, Colors.Sun),
+            Framing.New(327, Colors.Dark),
+            Framing.New(441, Colors.Green),
+            Framing.New(505, Colors.Tan),
 
             // Verse 1
             Framing.New(596, Colors.White),

@@ -21,13 +21,13 @@ namespace StorybrewScripts
             Framing.New(27, Colors.Green),
             Framing.New(30, Colors.Dark),
 
-            Framing.New(35, Colors.Red),
-            Framing.New(45, Colors.Sun),
+            Framing.New(33, Colors.Red),
+            Framing.New(44, Colors.Sun),
             Framing.New(55, Colors.Tan),
             Framing.New(75, Colors.Brown),
-            Framing.New(85, 145, Colors.Steel, Colors.White),
+            Framing.New(85, 144, Colors.Steel, Colors.White),
 
-            Framing.New(145, 510, Colors.Dark, Colors.White),
+            Framing.New(144, 510, Colors.Dark, Colors.White),
             Framing.New(521, Colors.Tan),
             Framing.New(534, Colors.Brown),
             Framing.New(544, Colors.Green),
