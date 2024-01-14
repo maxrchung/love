@@ -1,6 +1,6 @@
 ![image](https://github.com/maxrchung/love/assets/3955187/c30bd118-9fbd-49ce-9857-cfff7fd309dd)
 
-![image](https://github.com/maxrchung/love/assets/3955187/f3408e93-aabb-4a40-a4df-a589463dd4c3)
+![image](https://github.com/maxrchung/love/assets/3955187/6c487478-a350-4bc7-943f-4afad7e23dc4)
 
 ![image](https://github.com/maxrchung/love/assets/3955187/1ba005b7-0053-4f39-b01b-cafc3ce164f2)
 
