@@ -4,4 +4,4 @@
 
 ![image](https://github.com/maxrchung/love/assets/3955187/3a4f408b-b051-446a-ad9e-6c44444229b4)
 
-![image](https://github.com/maxrchung/love/assets/3955187/ece1e72d-014a-45c5-b617-e7b6251b017d)
+![image](https://github.com/maxrchung/love/assets/3955187/008dbef4-2714-40cc-ba1d-6553457135d9)
